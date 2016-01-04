@@ -1,0 +1,3 @@
+hdfs==2.0.4
+mrjob==0.4.6
+python-Levenshtein==0.12.0
