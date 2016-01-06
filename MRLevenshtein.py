@@ -15,7 +15,8 @@ class MRLevenshtein(MRJob):
     def mapper(self, key, value):
         for word in self.wordlist:
             dist = distance(word, value)
-            yield value, "{} {}".format(word, str(dist))
+            if dist <= 3:
+                yield value, "{} {}".format(word, str(dist))
 
     def steps(self):
         return [
