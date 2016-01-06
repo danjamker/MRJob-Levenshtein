@@ -9,6 +9,8 @@
 *.ll
 *.lso
 *.msd
+/.mrjob.conf
+/Data
 *.msk
 *.ncd
 *.ngc
