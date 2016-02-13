@@ -15,7 +15,7 @@ class MRLevenshtein(MRJob):
     def mapper(self, key, value):
         for word in self.wordlist:
             dist = distance(word, value)
-            if dist <= 3:
+            if dist <= 2:
                 yield word, value
 
     def reducer(self, key, values):
