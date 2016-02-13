@@ -16,12 +16,20 @@ class MRLevenshtein(MRJob):
         for word in self.wordlist:
             dist = distance(word, value)
             if dist <= 3:
-                yield value, "{} {}".format(word, str(dist))
+                yield word, value
+
+    def reducer(self, key, values):
+        s = []
+        for st in values:
+            s.append(st)
+
+        yield key, " ".join(s)
 
     def steps(self):
         return [
             MRStep(mapper_init=self.mapper_init,
-                   mapper=self.mapper)
+                   mapper=self.mapper,
+                   reducer=self.reducer)
         ]
 
 if __name__ == '__main__':
